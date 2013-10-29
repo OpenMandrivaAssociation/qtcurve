@@ -11,6 +11,9 @@ Url:		https://github.com/QtCurve/qtcurve/releases
 Source0:	https://github.com/QtCurve/qtcurve/archive/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(x11-xcb)
+BuildRequires:	pkgconfig(xcb)
+BuildRequires:	pkgconfig(xcb-image)
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
 
