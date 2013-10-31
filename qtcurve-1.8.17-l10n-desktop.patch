@@ -1,0 +1,11 @@
+diff -urN qtcurve-1.8.17/qt4/style/qtcurve.themerc qtcurve-1.8.17-patched/qt4/style/qtcurve.themerc
+--- qtcurve-1.8.17/qt4/style/qtcurve.themerc	2013-10-18 23:35:20.000000000 +1100
++++ qtcurve-1.8.17-patched/qt4/style/qtcurve.themerc	2013-10-31 21:41:45.531584659 +1100
+@@ -1,6 +1,7 @@
+ [Misc]
+ Name=QtCurve
+ Comment=Highly configurable style
++Comment[ru]=Гибко настраиваемый стиль
+ Comment[zh_CN]=可高度定制的风格
+ Comment[zh_HK]=可高度定制的樣式
+ Comment[zh_TW]=可高度定制的樣式

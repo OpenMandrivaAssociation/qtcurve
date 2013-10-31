@@ -4,12 +4,14 @@
 Summary:	QtCurve Theme for Qt and GTK
 Name:		qtcurve
 Version:	1.8.17
-Release:	2
+Release:	3
 Group:		Graphical desktop/Other
 License:	GPLv2+
 Url:		https://github.com/QtCurve/qtcurve/releases
 Source0:	https://github.com/QtCurve/qtcurve/archive/%{name}-%{version}.tar.gz
 Patch0:		qtcurve-1.8.17-kwin-frames.patch
+Patch1:		qtcurve-1.8.17-l10n-fix.patch
+Patch2:		qtcurve-1.8.17-l10n-desktop.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(x11-xcb)
@@ -102,6 +104,8 @@ Shared library for QtCurve.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %cmake_kde4 \
