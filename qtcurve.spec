@@ -1,24 +1,30 @@
 %define libnamekde4 %{_lib}kde4-style-qtcurve
 %define libnamegtk2 %{_lib}qtcurve-gtk2
 
+%bcond_without qt5
+
 Summary:	QtCurve Theme for Qt and GTK
 Name:		qtcurve
-Version:	1.8.17
-Release:	8
-Group:		Graphical desktop/Other
+Version:	1.8.18
+Release:	1
 License:	GPLv2+
+Group:		Graphical desktop/Other
 Url:		https://github.com/QtCurve/qtcurve/releases
 Source0:	https://github.com/QtCurve/qtcurve/archive/%{name}-%{version}.tar.gz
-Patch0:		qtcurve-1.8.17-kwin-frames.patch
+Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
-Patch2:		qtcurve-1.8.17-l10n-desktop.patch
 BuildRequires:	cmake
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(x11-xcb)
-BuildRequires:	pkgconfig(xcb)
-BuildRequires:	pkgconfig(xcb-image)
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
+%if %{with qt5}
+BuildRequires:	qt5-devel
+%endif
+
+BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(pangocairo)
+BuildRequires:	pkgconfig(x11-xcb)
+BuildRequires:	pkgconfig(xcb)
 
 %description
 QtCurve Theme for Qt and GTK.
@@ -41,6 +47,18 @@ QtCurve theme for KDE4.
 %{_kde_appsdir}/color-schemes/
 %{_kde_appsdir}/kstyle/
 %{_kde_appsdir}/kwin/
+
+#----------------------------------------------------------------------------
+
+%package -n qt5-style-qtcurve
+Summary:	QtCurve style for Qt5
+Group:		Graphical desktop/KDE
+
+%description -n qt5-style-qtcurve
+QtCurve style for Qt5.
+
+%files -n qt5-style-qtcurve
+%{_qt5_plugindir}/styles/qtcurve.so
 
 #----------------------------------------------------------------------------
 
@@ -86,8 +104,23 @@ GTK2 libraries for QtCurve.
 
 #----------------------------------------------------------------------------
 
-%define major 0
-%define libqtcurveutils %mklibname qtcurve-utils %{major}
+%define cairo_major 0
+%define libqtcurvecairo %mklibname qtcurve-cairo %{cairo_major}
+
+%package -n %{libqtcurvecairo}
+Summary:	Shared library for QtCurve
+Group:		System/Libraries
+
+%description -n %{libqtcurvecairo}
+Shared library for QtCurve.
+
+%files -n %{libqtcurvecairo}
+%{_libdir}/libqtcurve-cairo.so.%{cairo_major}*
+
+#----------------------------------------------------------------------------
+
+%define utils_major 1
+%define libqtcurveutils %mklibname qtcurve-utils %{utils_major}
 
 %package -n %{libqtcurveutils}
 Summary:	Shared library for QtCurve
@@ -97,7 +130,7 @@ Group:		System/Libraries
 Shared library for QtCurve.
 
 %files -n %{libqtcurveutils}
-%{_libdir}/libqtcurve-utils.so.%{major}*
+%{_libdir}/libqtcurve-utils.so.%{utils_major}*
 
 #----------------------------------------------------------------------------
 
@@ -105,13 +138,16 @@ Shared library for QtCurve.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %cmake_kde4 \
 	-DENABLE_QT4:BOOL=ON \
 	-DQTC_QT4_ENABLE_KDE:BOOL=ON \
+%if %{with qt5}
+	-DENABLE_QT5:BOOL=ON \
+%else
 	-DENABLE_QT5:BOOL=OFF \
+%endif
 	-DENABLE_GTK2:BOOL=ON
 %make
 
@@ -119,6 +155,7 @@ Shared library for QtCurve.
 %makeinstall_std -C build
 
 # We don't have devel package so we don't need it
+rm %{buildroot}%{_libdir}/libqtcurve-cairo.so
 rm %{buildroot}%{_libdir}/libqtcurve-utils.so
 
 %find_lang qtcurve
