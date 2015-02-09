@@ -1,5 +1,6 @@
 %define libnamekde4 %{_lib}kde4-style-qtcurve
 %define libnamegtk2 %{_lib}qtcurve-gtk2
+%define _disable_ld_no_undefined 1
 
 %bcond_without qt5
 
