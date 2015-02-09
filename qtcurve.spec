@@ -14,6 +14,7 @@ Url:		https://github.com/QtCurve/qtcurve/releases
 Source0:	https://github.com/QtCurve/qtcurve/archive/%{name}-%{version}.tar.gz
 Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
+Patch2:		qtcurve-1.8.18-qt5.3.patch
 BuildRequires:	cmake
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
@@ -137,8 +138,7 @@ Shared library for QtCurve.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%apply_patches
 
 %build
 %cmake_kde4 \
