@@ -7,7 +7,7 @@
 Summary:	QtCurve Theme for Qt and GTK
 Name:		qtcurve
 Version:	1.8.18
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		https://github.com/QtCurve/qtcurve/releases
