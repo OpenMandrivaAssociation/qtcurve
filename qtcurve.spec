@@ -20,6 +20,12 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
 %if %{with qt5}
 BuildRequires:	qt5-devel
+BuildRequires:	pkgconfig(Qt5Svg)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Quick)
+BuildRequires:	pkgconfig(Qt5DBus)
 %endif
 
 BuildRequires:	pkgconfig(cairo)
