@@ -2,24 +2,40 @@
 %define libnamegtk2 %{_lib}qtcurve-gtk2
 %define _disable_ld_no_undefined 1
 
+%define gitdate 20160713
+
 %bcond_without qt5
 
 Summary:	QtCurve Theme for Qt and GTK
 Name:		qtcurve
 Version:	1.8.18
-Release:	5
+Release:	6.%{gitdate}.1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Url:		https://github.com/QtCurve/qtcurve/releases
-Source0:	https://github.com/QtCurve/qtcurve/archive/%{name}-%{version}.tar.gz
+Url:		https://github.com/KDE/QtCurve
+#Source0:	https://github.com/KDE/QtCurve/archive/%{name}-%{version}.tar.gz
+# git archive --prefix=qtcurve-1.8.18-$(date +%Y%m%d)/ --format=tar HEAD | xz > ../qtcurve-1.8.18-$(date +%Y%m%d).tar.xz
+Source0:	%{name}-%{version}-%{gitdate}.tar.xz
+#Source0:	https://github.com/KDE/QtCurve/archive/%{name}-%{version}.tar.gz
 Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
-Patch2:		qtcurve-1.8.18-qt5.3.patch
+Patch2:		qtcurve-1.8.18-enable-translations.patch
+Patch3:		qtcurve-1.8.18-qt5.3.patch
 BuildRequires:	cmake
-BuildRequires:	kdelibs4-devel
-BuildRequires:	kdebase4-workspace-devel
+BuildRequires:	kdelibs-devel
+BuildRequires:	kdebase-workspace-devel
 %if %{with qt5}
-BuildRequires:	qt5-devel
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5ConfigWidgets)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5KDELibs4Support)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5GuiAddons)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
@@ -55,6 +71,19 @@ QtCurve theme for KDE4.
 %{_kde_appsdir}/color-schemes/
 %{_kde_appsdir}/kstyle/
 %{_kde_appsdir}/kwin/
+
+#----------------------------------------------------------------------------
+%package -n plasma-style-qtcurve
+Summary:	QtCurve style for Plasma 5
+Group:		Graphical desktop/KDE
+Requires:	qt5-style-qtcurve
+
+%description -n plasma-style-qtcurve
+QtCurve style for Plasma 5.
+
+%files -n plasma-style-qtcurve
+%{_kde_datadir}/kstyle/themes/qtcurve.themerc
+%{_qt5_plugindir}/kstyle_qtcurve5_config.so
 
 #----------------------------------------------------------------------------
 
@@ -143,7 +172,7 @@ Shared library for QtCurve.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}-%{gitdate}
 %apply_patches
 
 %build
@@ -152,8 +181,11 @@ Shared library for QtCurve.
 	-DQTC_QT4_ENABLE_KDE:BOOL=ON \
 %if %{with qt5}
 	-DENABLE_QT5:BOOL=ON \
+	-DQTC_QT5_ENABLE_KDE:BOOL=ON \
+	-DQTC_QT5_ENABLE_QTQUICK2:BOOL=ON \
 %else
 	-DENABLE_QT5:BOOL=OFF \
+	-DQTC_QT5_ENABLE_KDE:BOOL=OFF \
 %endif
 	-DENABLE_GTK2:BOOL=ON
 %make
@@ -166,4 +198,3 @@ rm %{buildroot}%{_libdir}/libqtcurve-cairo.so
 rm %{buildroot}%{_libdir}/libqtcurve-utils.so
 
 %find_lang qtcurve
-

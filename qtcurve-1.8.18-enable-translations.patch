@@ -1,0 +1,16 @@
+Description: Enable translations
+Author: Boris Pek <tehnick-8@mail.ru>
+Last-Update: 2015-07-25
+Forwarded: not-needed
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -217,6 +217,7 @@
+ add_subdirectory(qt5)
+ add_subdirectory(gtk2)
+ add_subdirectory(tools)
++add_subdirectory(po)
+ if(ENABLE_TEST)
+   enable_testing()
+   add_subdirectory(test)
