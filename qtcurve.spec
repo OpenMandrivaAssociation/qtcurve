@@ -20,7 +20,7 @@ Source0:	%{name}-%{version}-%{gitdate}.tar.xz
 Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
 Patch2:		qtcurve-1.8.18-enable-translations.patch
-Patch3:		qtcurve-1.8.18-qt5.3.patch
+#Patch3:		qtcurve-1.8.18-qt5.3.patch
 BuildRequires:	cmake
 BuildRequires:	kdelibs-devel
 BuildRequires:	kde-workspace-devel
@@ -84,6 +84,7 @@ QtCurve style for Plasma 5.
 %files -n plasma-style-qtcurve
 %{_kde_datadir}/kstyle/themes/qtcurve.themerc
 %{_qt5_plugindir}/kstyle_qtcurve5_config.so
+%{_kde_datadir}/kxmlgui5/QtCurve/QtCurveui.rc
 
 #----------------------------------------------------------------------------
 
@@ -141,7 +142,7 @@ GTK2 libraries for QtCurve.
 
 #----------------------------------------------------------------------------
 
-%define cairo_major 0
+%define cairo_major 1
 %define libqtcurvecairo %mklibname qtcurve-cairo %{cairo_major}
 
 %package -n %{libqtcurvecairo}
@@ -156,7 +157,7 @@ Shared library for QtCurve.
 
 #----------------------------------------------------------------------------
 
-%define utils_major 1
+%define utils_major 2
 %define libqtcurveutils %mklibname qtcurve-utils %{utils_major}
 
 %package -n %{libqtcurveutils}
