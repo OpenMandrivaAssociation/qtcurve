@@ -2,8 +2,6 @@
 %define libnamegtk2 %{_lib}qtcurve-gtk2
 %define _disable_ld_no_undefined 1
 
-# %define gitdate 20180913
-
 %bcond_without qt5
 
 Summary:	QtCurve Theme for Qt and GTK
@@ -14,9 +12,7 @@ License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		https://github.com/KDE/QtCurve
 #Source0:	https://github.com/KDE/qtcurve/releases/%{name}-%{version}.tar.gz
-# git archive --prefix=qtcurve-1.9.0-$(date +%Y%m%d)/ --format=tar HEAD | xz > ../qtcurve-1.9.0-$(date +%Y%m%d).tar.gz
 Source0:	%{name}-%{version}.tar.gz
-#Source0:	https://github.com/KDE/QtCurve/archive/%{name}-%{version}.tar.gz
 Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
 Patch2:		qtcurve-1.8.18-enable-translations.patch
