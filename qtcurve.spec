@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		https://github.com/KDE/QtCurve
-Source0:	%{name}-%{version}.tar.gz
+Source0:	https://github.com/KDE/qtcurve/releases/%{name}-%{version}.tar.gz
 Patch0:		qtcurve-1.8.18-kwin-frames.patch
 Patch1:		qtcurve-1.8.17-l10n-fix.patch
 Patch2:		qtcurve-1.8.18-enable-translations.patch
