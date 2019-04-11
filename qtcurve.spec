@@ -2,7 +2,7 @@
 %define libnamegtk2 %{_lib}qtcurve-gtk2
 %define _disable_ld_no_undefined 1
 
-%define gitdate 20190411
+%define gitdate 20180913
 
 %bcond_without qt5
 
