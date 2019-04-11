@@ -18,7 +18,7 @@ Patch2:		qtcurve-1.8.18-enable-translations.patch
 #Patch3:		qtcurve-1.8.18-qt5.3.patch
 BuildRequires:	cmake
 BuildRequires:	kdelibs4support
-BuildRequires:	libplasma-workspace-devel
+BuildRequires:	plasma-workspace-devel
 %if %{with qt5}
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
