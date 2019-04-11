@@ -168,7 +168,7 @@ Shared library for QtCurve.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -qn %{name}-%{version}-%{gitdate}
+%setup -qn %{name}-%{version}
 %apply_patches
 
 %build
