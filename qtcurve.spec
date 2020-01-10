@@ -174,7 +174,7 @@ Shared library for QtCurve.
 
 %prep
 %setup -qn %{name}-%{version}-%{gitdate}
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake_kde4 \
@@ -369,7 +369,7 @@ Shared library for QtCurve.
 
 %prep
 %setup -qn %{name}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake_kde4 \
