@@ -144,11 +144,11 @@ Shared library for QtCurve.
 export CC=gcc
 export CXX=g++
 %cmake \
-	-DENABLE_QT4=OFF \
+	-DENABLE_QT4=OFF
 #	-DENABLE_QT5:BOOL=ON \
 #	-DQTC_QT5_ENABLE_KDE:BOOL=ON \
 #	-DQTC_QT5_ENABLE_QTQUICK2:BOOL=ON \
-	-DENABLE_GTK2:BOOL=ON
+#	-DENABLE_GTK2:BOOL=ON
 %make_build
 
 %install
