@@ -147,7 +147,7 @@ Shared library for QtCurve.
 	-DQTC_QT5_ENABLE_KDE:BOOL=ON \
 	-DQTC_QT5_ENABLE_QTQUICK2:BOOL=ON \
 	-DENABLE_GTK2:BOOL=ON
-%make_build -C build
+%make_build
 
 %install
 %make_install -C build
