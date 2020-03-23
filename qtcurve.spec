@@ -2,10 +2,6 @@
 %define libnamegtk2 %{_lib}qtcurve-gtk2
 %define _disable_ld_no_undefined 1
 
-%define gitdate 20160713
-
-%bcond_without qt5
-
 Summary:	QtCurve Theme for Qt and GTK
 Name:		qtcurve
 Version:	1.9.0
@@ -138,7 +134,7 @@ Shared library for QtCurve.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -qn %{name}-%{version}-%{gitdate}
+%setup -qn %{name}-%{version}
 %autopatch -p1
 
 %build
