@@ -141,6 +141,8 @@ Shared library for QtCurve.
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake \
 	-DENABLE_QT4=OFF \
 	-DENABLE_QT5:BOOL=ON \
