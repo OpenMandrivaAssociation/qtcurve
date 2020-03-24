@@ -53,6 +53,10 @@ Requires:	%{name}-kf5 = %{version}-%{release}
 %description
 QtCurve Theme for Qt and GTK.
 
+%files -f %{name}.lang
+%doc AUTHORS Bugs.md README.md TODO.md ChangeLog.md
+%license COPYING
+
 #----------------------------------------------------------------------------
 
 %package -n plasma-style-qtcurve
@@ -64,9 +68,9 @@ Requires:	qt5-style-qtcurve
 QtCurve style for Plasma 5.
 
 %files -n plasma-style-qtcurve
-#{_kde_datadir}/kstyle/themes/qtcurve.themerc
-#{_qt5_plugindir}/kstyle_qtcurve5_config.so
-#{_kde_datadir}/kxmlgui5/QtCurve/QtCurveui.rc
+%{_datadir}/kstyle/themes/qtcurve.themerc
+%{_libdir}/qt5/plugins/kstyle_qtcurve5_config.so
+%{_datadir}/kxmlgui5/QtCurve/QtCurveui.rc
 
 #----------------------------------------------------------------------------
 
@@ -78,7 +82,7 @@ Group:		Graphical desktop/KDE
 QtCurve style for Qt5.
 
 %files -n qt5-style-qtcurve
-#{_qt5_plugindir}/styles/qtcurve.so
+%{_libdir}qt5/styles/qtcurve.so
 
 #----------------------------------------------------------------------------
 
@@ -135,7 +139,6 @@ Shared library for QtCurve.
 
 %files -n %{libqtcurveutils}
 %{_libdir}/libqtcurve-utils.so.%{utils_major}*
-
 #----------------------------------------------------------------------------
 
 %prep
@@ -155,3 +158,6 @@ Shared library for QtCurve.
 
 %install
 %make_install -C build
+
+# Not needed files.
+rm -fv %{buildroot}%{_libdir}/libqtcurve-{cairo,utils}.so
