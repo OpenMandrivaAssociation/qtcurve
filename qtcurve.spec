@@ -64,9 +64,9 @@ Requires:	qt5-style-qtcurve
 QtCurve style for Plasma 5.
 
 %files -n plasma-style-qtcurve
-%{_kde_datadir}/kstyle/themes/qtcurve.themerc
-%{_qt5_plugindir}/kstyle_qtcurve5_config.so
-%{_kde_datadir}/kxmlgui5/QtCurve/QtCurveui.rc
+#{_kde_datadir}/kstyle/themes/qtcurve.themerc
+#{_qt5_plugindir}/kstyle_qtcurve5_config.so
+#{_kde_datadir}/kxmlgui5/QtCurve/QtCurveui.rc
 
 #----------------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ Group:		Graphical desktop/KDE
 QtCurve style for Qt5.
 
 %files -n qt5-style-qtcurve
-%{_qt5_plugindir}/styles/qtcurve.so
+#{_qt5_plugindir}/styles/qtcurve.so
 
 #----------------------------------------------------------------------------
 
