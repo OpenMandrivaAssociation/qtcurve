@@ -1,0 +1,11 @@
+diff -up qtcurve-1.9/qt5/style/qtcurve.h qtcurve-1.9/qt5/style/qtcurve.h-om
+--- qtcurve-1.9/qt5/style/qtcurve.h     2018-09-11 13:50:01.000000000 +0200
++++ qtcurve-1.9/qt5/style/qtcurve.h-om  2020-03-24 17:34:22.015466224 +0100
+@@ -25,6 +25,7 @@
+ 
+ #include <QTime>
+ #include <QPalette>
++#include <QPainterPath>
+ #include <QMap>
+ #include <QList>
+ #include <QSet>
