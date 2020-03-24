@@ -15,6 +15,7 @@ Source0:	https://download.kde.org/stable/qtcurve/%{name}-%{version}.tar.xz
 #Source0:	https://github.com/KDE/QtCurve/archive/%{name}-%{version}.tar.gz
 
 Patch0:		0037-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
+Patch1:		qtcurve-1.9-missing-include-openmandriva.patch
 
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
