@@ -46,17 +46,15 @@ BuildRequires:	pkgconfig(x11-xcb)
 BuildRequires:	pkgconfig(xcb)
 BuildRequires:	gettext
 
-Requires:	%{name}-gtk2 = %{version}-%{release}
-Requires:	%{name}-qt5 = %{version}-%{release}
-Requires:	%{name}-kf5 = %{version}-%{release}
+Requires:	plasma-style-qtcurve = %{version}-%{release}
+Requires:	qt5-style-qtcurve = %{version}-%{release}
+Requires:	qtcurve-gtk2 = %{version}-%{release}
 
 %description
 QtCurve Theme for Qt and GTK.
 
-%files -f %{name}.lang
-%doc AUTHORS Bugs.md README.md TODO.md ChangeLog.md
-%license COPYING
-
+%files
+%{_datadir}/locale/*/LC_MESSAGES/qtcurve.mo
 #----------------------------------------------------------------------------
 
 %package -n plasma-style-qtcurve
