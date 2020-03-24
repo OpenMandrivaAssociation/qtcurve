@@ -80,7 +80,7 @@ Group:		Graphical desktop/KDE
 QtCurve style for Qt5.
 
 %files -n qt5-style-qtcurve
-%{_libdir}qt5/styles/qtcurve.so
+%{_libdir}/qt5/styles/qtcurve.so
 
 #----------------------------------------------------------------------------
 
