@@ -5,7 +5,7 @@ diff -up qtcurve-1.9/qt5/style/qtcurve.h qtcurve-1.9/qt5/style/qtcurve.h-om
  
  #include <QTime>
  #include <QPalette>
-+#include <QPainterPath
++#include <QPainterPath>
  #include <QMap>
  #include <QList>
  #include <QSet>
